@@ -11,19 +11,6 @@
 
 <script>
 export default {
-    // metaInfo: {
-    //     title: 'Title',
-    // }
-    // props: {
-    //     title: String,
-    // },
-    // watch: {
-    //     title: {
-    //         immediate: true,
-    //         handler(title) {
-    //             document.title = title
-    //         },
-    //     },
-    // },
+    title: 'Title'
 }
 </script>

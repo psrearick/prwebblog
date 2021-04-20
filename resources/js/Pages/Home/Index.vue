@@ -8,5 +8,6 @@ import Layout from '@/Shared/Layout';
 
 export default {
     layout: Layout,
+    title: 'Home'
 };
 </script>
