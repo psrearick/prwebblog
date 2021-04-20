@@ -1,12 +1,15 @@
-require('./bootstrap');
+import { createApp, h } from 'vue';
+import { App, plugin } from '@inertiajs/inertia-vue3';
 
-import Vue from 'vue'
+const el = document.getElementById('app');
 
-//Main pages
-import App from './views/app.vue'
-
-
-const app = new Vue({
-    el: '#app',
-    components: { App }
-});
+createApp({
+    render: () =>
+        h(App, {
+            initialPage: JSON.parse(el.dataset.page),
+            resolveComponent: (name) =>
+                import(`@/Pages/${name}`).then((module) => module.default),
+        }),
+})
+    .use(plugin)
+    .mount(el);
