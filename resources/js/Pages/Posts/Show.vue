@@ -1,5 +1,6 @@
 <template>
-    <div v-html="content"/>
+    <h1>{{ content.title }}</h1>
+    <div v-html="content.body"/>
     <a href="/">Back</a>
 </template>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -49,17 +50,8 @@ class PostController extends Controller
      */
     public function show(string $slug) : Response
     {
-        $path = __DIR__ . resource_path("posts/{$slug}.html");
-        if (!file_exists($path)) {
-            return Inertia::render('Home/Index');
-        }
-
-        $post = cache()->remember("posts.{$slug}", now()->addMinutes(20), function () use ($path) {
-            return file_get_contents($path);
-        });
-
         return Inertia::render('Posts/Show', [
-            'content' => $post,
+            'content' => Post::find($slug),
         ]);
     }
 
