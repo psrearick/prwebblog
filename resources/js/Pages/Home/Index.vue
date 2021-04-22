@@ -2,7 +2,7 @@
     <div>
         <h1>Posts</h1>
     </div>
-    <div v-for="post in posts" :key="post.slug">
+    <div v-for="post in posts" :key="post.slug" class="mb-4">
         <h3>
             <a :href="'/posts/' + post.slug">{{ post.title}} </a>
         </h3>
