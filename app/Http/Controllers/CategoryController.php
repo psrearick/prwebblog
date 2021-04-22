@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use Exception;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -44,24 +42,23 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $slug
+     * @param Category $category
      * @return Response
-     * @throws Exception
      */
-    public function show(string $slug) : Response
+    public function show(Category $category)
     {
-        return Inertia::render('Posts/Show', [
-            'content' => Post::where('slug', $slug)->with('category')->first(),
+        return Inertia::render('Home/Index', [
+            'posts' => $category->posts,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -70,10 +67,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -81,10 +78,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }

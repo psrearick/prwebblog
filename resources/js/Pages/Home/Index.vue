@@ -7,6 +7,9 @@
             <a :href="'/posts/' + post.slug">{{ post.title}} </a>
         </h3>
         <div>
+            <a v-if="post.category" :href="'/categories/' + post.category.slug">{{ post.category.name }}</a>
+        </div>
+        <div>
             {{ post.excerpt }}
         </div>
     </div>
