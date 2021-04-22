@@ -4,7 +4,7 @@
     </div>
     <div v-for="post in posts" :key="post.slug" class="mb-4">
         <h3>
-            <a :href="'/posts/' + post.id">{{ post.title}} </a>
+            <a :href="'/posts/' + post.slug">{{ post.title}} </a>
         </h3>
         <div>
             {{ post.excerpt }}
