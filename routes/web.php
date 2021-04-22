@@ -6,5 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/posts/{slug}', [PostController::class, 'show'])
-    ->where('slug', '[A-z_\-]+');
+Route::get('/posts/{post}', [PostController::class, 'show']);

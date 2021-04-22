@@ -48,10 +48,10 @@ class PostController extends Controller
      * @return Response
      * @throws Exception
      */
-    public function show(string $slug) : Response
+    public function show(Post $post) : Response
     {
         return Inertia::render('Posts/Show', [
-            'content' => Post::find($slug),
+            'content' => $post,
         ]);
     }
 
