@@ -1,0 +1,12 @@
+html, body {
+    width: 100%;
+    height: 100vh;
+}
+
+.app-bg-default {
+    @apply bg-white;
+}
+
+.app-bg-gray {
+    @apply bg-gray-50;
+}

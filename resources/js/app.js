@@ -1,6 +1,10 @@
 import { createApp, h } from 'vue';
 import { App, plugin } from '@inertiajs/inertia-vue3';
 import titleMixin from "./Shared/Mixins/titleMixin";
+import mitt from 'mitt';
+
+
+const emitter = mitt();
 
 const el = document.getElementById('app');
 
@@ -14,4 +18,5 @@ const app = createApp({
 });
 app.use(plugin)
 app.mixin(titleMixin);
+app.config.globalProperties.emitter = emitter;
 app.mount(el);
