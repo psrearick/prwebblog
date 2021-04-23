@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->foreignId('category_id');
             $table->foreignId('user_id');
+            $table->string('image_url');
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });

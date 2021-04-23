@@ -50,6 +50,7 @@ Ut lobortis orci eu leo gravida, eget consequat ipsum facilisis. Sed fringilla n
             'category_id'   => $category1->id,
             'user_id'       => $user->id,
             'published_at'  => '2021-04-23 05:50:27',
+            'image_url'     => 'https://images.unsplash.com/photo-1619117491206-fdf1558d6a52?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80',
         ]);
 
         Post::create([
@@ -68,6 +69,7 @@ In hac habitasse platea dictumst. Maecenas vitae pellentesque eros. In vel velit
             'category_id'   => $category2->id,
             'user_id'       => $user->id,
             'published_at'  => '2021-04-18 05:50:27',
+            'image_url'     => 'https://images.unsplash.com/photo-1596892088225-35f481eeb452?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2089&q=80',
         ]);
 
         Post::create([
@@ -86,6 +88,7 @@ Ut volutpat venenatis justo, id volutpat dolor imperdiet a. Morbi sed sem est. P
             'category_id'   => $category3->id,
             'user_id'       => $user->id,
             'published_at'  => '2021-04-13 05:50:27',
+            'image_url'     => 'https://images.unsplash.com/photo-1585051506613-2afa611ac2d3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80',
         ]);
 
     }
