@@ -1,5 +1,9 @@
 <template>
     <div class="py-20">
+        <div v-if="category" class="text-center pb-12">
+            <h1 class="text-2xl font-bold text-center">{{ category.name }}</h1>
+            <inertia-link class="text-yellow-500 text-sm" href="/posts/posts">View All Posts</inertia-link>
+        </div>
         <div v-for="(post, index) in posts" :key="post.slug" class="mb-4" :class="index < posts.length -1 ? 'border-b border-gray-200' : ''">
             <div class="grid grid-cols-4 py-6">
                 <div>
@@ -14,7 +18,7 @@
                 </div>
                 <div class="col-span-2">
                     <h3>
-                        <a :href="'/posts/posts/' + post.slug" class="text-2xl">{{ post.title}}</a>
+                        <inertia-link :href="'/posts/posts/' + post.slug" class="text-2xl">{{ post.title}}</inertia-link>
                     </h3>
                     <div>
                         <p class="text-sm pt-2">
@@ -25,7 +29,7 @@
                 </div>
                 <div class="flex flex-col justify-around">
                     <div>
-                        <a :href="'/posts/posts/' + post.slug" class="py-2 px-4 border-2 border-black float-right hover:bg-black hover:text-gray-100">Continue Reading</a>
+                        <inertia-link :href="'/posts/posts/' + post.slug" class="py-2 px-4 border-2 border-black float-right hover:bg-black hover:text-gray-100">Continue Reading</inertia-link>
                     </div>
                 </div>
             </div>
@@ -47,7 +51,7 @@ export default {
 
     title: 'Posts',
 
-    props: ['post_data'],
+    props: ['post_data', 'category'],
 
     data: function() {
         return {

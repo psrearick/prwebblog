@@ -20,6 +20,7 @@ class PostController extends Controller
     {
         return Inertia::render('Posts/Index', [
             'post_data' => Post::where('category_id', $category->id)->whereNotNull('published_at')->orderBy('published_at', 'desc')->paginate(5),
+            'category'  => $category,
         ]);
     }
 
