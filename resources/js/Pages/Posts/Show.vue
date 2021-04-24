@@ -1,16 +1,20 @@
 <template>
-    <div>
-        <div class="text-center pt-8">
-            <h1 class="font-bold text-4xl pb-4">{{ content.title }}</h1>
-            <span class="text-gray-500">{{ content.excerpt }}</span>
+    <div class="pb-20">
+        <div>
+            <div class="text-center pt-8">
+                <h1 class="font-bold text-4xl pb-4">{{ content.title }}</h1>
+                <span class="text-gray-500">{{ content.excerpt }}</span>
+            </div>
+            <div class="text-center">
+                <img :src="content.image_url" :alt="content.title" class="w-full p-8">
+            </div>
         </div>
-        <div class="text-center">
-            <img :src="content.image_url" :alt="content.title" class="w-full p-8">
+        <div class="p-8" v-html="content.body"/>
+        <div class="flex justify-between">
+            <a v-if="content.category" :href="'/posts/categories/' + content.category.slug" class="text-yellow-600 hover:text-black hover:font-bold">{{ content.category.name }}</a>
+            <a v-if="content.category" :href="'/posts/authors/' + content.user.id" class="text-yellow-600 hover:text-black hover:font-bold">{{ content.user.name }}</a>
         </div>
     </div>
-    <a v-if="content.category" :href="'/categories/' + content.category.slug">{{ content.category.name }}</a>
-    <div v-html="content.body"/>
-    <a href="/">Back</a>
 </template>
 
 <script>

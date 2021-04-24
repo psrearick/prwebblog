@@ -1,8 +1,12 @@
 <template>
-    <div class="grid grid-cols-3 pt-20">
+    <div class="grid grid-cols-3 py-20">
         <div>
             <h1 class="text-4xl">What's New?</h1>
-            <p class="w-2/3 pt-4">the latest in news on a variety of web development topics</p>
+            <div class="text-gray-500">
+                <p class="w-2/3 pt-8">the latest news in the web development world</p>
+                <p class="w-2/3 pt-8">discussions on a wide range of develop topics</p>
+                <p class="w-2/3 pt-8">instruction on proper application of coding principles in the context of fun projects</p>
+            </div>
         </div>
         <div class="col-span-2">
             <div v-for="post in posts" :key="post.slug" class="mb-4 border-b border-gray-200">
@@ -19,7 +23,7 @@
                     </div>
                     <div class="col-span-2">
                         <h3>
-                            <a :href="'/posts/' + post.slug" class="text-2xl">{{ post.title}}</a>
+                            <a :href="'/posts/posts/' + post.slug" class="text-2xl">{{ post.title}}</a>
                         </h3>
                         <div>
                             <p class="text-sm pt-2">
@@ -30,13 +34,13 @@
                     </div>
                     <div class="flex flex-col justify-around">
                         <div>
-                            <a :href="'/posts/' + post.slug" class="py-2 px-4 border-2 border-black float-right hover:bg-black hover:text-gray-100">Continue Reading</a>
+                            <a :href="'/posts/posts/' + post.slug" class="py-2 px-4 border-2 border-black float-right hover:bg-black hover:text-gray-100">Continue Reading</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center pt-8">
-                <a :href="'/posts/'" class="bg-gray-300 py-2 px-4 hover:bg-black hover:text-gray-100">Explore More</a>
+                <a :href="'/posts/posts'" class="bg-gray-300 py-2 px-4 hover:bg-black hover:text-gray-100">Explore More</a>
             </div>
         </div>
     </div>

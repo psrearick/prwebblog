@@ -3,9 +3,9 @@
         <header class="app-bg-default">
             <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
                 <div class="flex justify-between py-5">
-                    <inertia-link href="/" class="font-bold">PRWebBlog</inertia-link>
+                    <inertia-link href="/" class="font-bold text-yellow-600">PRWebBlog</inertia-link>
                     <nav>
-                        <inertia-link href="/" class="hover:text-gray-500">Home</inertia-link>
+                        <inertia-link href="/" class="hover:text-yellow-500">Home</inertia-link>
                     </nav>
                 </div>
             </div>

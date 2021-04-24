@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::resource('posts', PostController::class);
+Route::prefix('posts')->group(function() {
+    Route::get('categories/{category}', [PostController::class, 'categoryIndex']);
+    Route::get('authors/{user}', [PostController::class, 'userIndex']);
+    Route::resource('posts', PostController::class);
+});
 
 Route::resource('categories', CategoryController::class);
