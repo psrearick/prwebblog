@@ -9,7 +9,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('posts')->group(function() {
     Route::get('categories/{category}', [PostController::class, 'categoryIndex']);
-    Route::get('authors/{user}', [PostController::class, 'userIndex']);
+    Route::get('authors/{author}', [PostController::class, 'userIndex']);
     Route::resource('posts', PostController::class);
 });
 

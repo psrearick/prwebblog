@@ -12,7 +12,7 @@
         <div class="p-8" v-html="content.body"/>
         <div class="flex justify-between">
             <a v-if="content.category" :href="'/posts/categories/' + content.category.slug" class="text-yellow-600 hover:text-black hover:font-bold">{{ content.category.name }}</a>
-            <a v-if="content.category" :href="'/posts/authors/' + content.user.id" class="text-yellow-600 hover:text-black hover:font-bold">{{ content.user.name }}</a>
+            <a v-if="content.category" :href="'/posts/authors/' + content.author.id" class="text-yellow-600 hover:text-black hover:font-bold">{{ content.author.name }}</a>
         </div>
     </div>
 </template>

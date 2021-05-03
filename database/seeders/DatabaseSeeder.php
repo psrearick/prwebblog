@@ -17,15 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $user = User::factory()->create();
+         $users = User::factory(4)->create();
 
          $categories = Category::factory(4)->create();
 
-         foreach ($categories as $category) {
-             Post::factory(8)->create([
-                 'user_id'      => $user->id,
-                 'category_id'  => $category->id,
-             ]);
+         foreach ($users as $user) {
+             foreach ($categories as $category) {
+                 Post::factory(6)->create([
+                     'user_id'      => $user->id,
+                     'category_id'  => $category->id,
+                 ]);
+             }
          }
     }
 }

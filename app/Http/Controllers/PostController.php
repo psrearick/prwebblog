@@ -19,7 +19,7 @@ class PostController extends Controller
     public function categoryIndex(Category $category) : Response
     {
         return Inertia::render('Posts/Index', [
-            'post_data' => Post::where('category_id', $category->id)->whereNotNull('published_at')->orderBy('published_at', 'desc')->paginate(5),
+            'post_data' => Post::where('category_id', $category->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
             'category'  => $category,
         ]);
     }
@@ -28,10 +28,10 @@ class PostController extends Controller
      * @param User $user
      * @return Response
      */
-    public function userIndex(User $user) : Response
+    public function userIndex(User $author) : Response
     {
         return Inertia::render('Posts/Index', [
-            'post_data' => Post::where('user_id', $user->id)->whereNotNull('published_at')->orderBy('published_at', 'desc')->paginate(5),
+            'post_data' => Post::where('user_id', $author->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
         ]);
     }
 
@@ -43,7 +43,7 @@ class PostController extends Controller
     public function index() : Response
     {
         return Inertia::render('Posts/Index', [
-            'post_data' => Post::whereNotNull('published_at')->orderBy('published_at', 'desc')->paginate(5),
+            'post_data' => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
         ]);
     }
 
@@ -78,7 +78,7 @@ class PostController extends Controller
     public function show(string $slug) : Response
     {
         return Inertia::render('Posts/Show', [
-            'content' => Post::where('slug', $slug)->with('category', 'user')->first(),
+            'content' => Post::where('slug', $slug)->with('category', 'author')->first(),
         ]);
     }
 

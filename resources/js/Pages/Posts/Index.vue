@@ -21,6 +21,10 @@
                         <inertia-link :href="'/posts/posts/' + post.slug" class="text-2xl">{{ post.title}}</inertia-link>
                     </h3>
                     <div>
+                        <p class="text-sm">
+                            By <inertia-link class="text-gray-500 hover:text-yellow-500" :href="'/posts/authors/' + post.author.id">{{ post.author.name }}</inertia-link>
+                            in <inertia-link class="text-gray-500 hover:text-yellow-500" :href="'/posts/categories/' + post.category.slug">{{ post.category.name }}</inertia-link>
+                        </p>
                         <p class="text-sm pt-2">
                             {{ post.excerpt }}
                         </p>
