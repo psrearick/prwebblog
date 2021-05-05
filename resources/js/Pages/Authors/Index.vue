@@ -1,4 +1,5 @@
 <template>
+
     <div class="py-20">
         <div v-if="category" class="text-center pb-12">
             <h1 class="text-2xl font-bold text-center">{{ category.name }}</h1>
@@ -51,7 +52,7 @@ export default {
     components: {Pagination},
     layout: Layout,
 
-    name: "posts-index",
+    name: "authors-index",
 
     title: 'Posts',
 
@@ -71,3 +72,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+</style>
