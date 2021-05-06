@@ -3,6 +3,8 @@ import { App, plugin } from '@inertiajs/inertia-vue3';
 import titleMixin from "./Shared/Mixins/titleMixin";
 import mitt from 'mitt';
 
+require('./bootstrap');
+
 
 const emitter = mitt();
 

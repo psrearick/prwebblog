@@ -40,7 +40,7 @@ class PostFactory extends Factory
             'body'          => $body,
             'published_at'  => $this->faker->dateTimeBetween('-1 year', 'now'),
             'slug'          => $this->faker->slug(),
-            'image_url'     => 'https://source.unsplash.com/random/1920x1080',
+            'image_url'     => 'https://source.unsplash.com/random/1920x1080?nature&sig=' . mt_rand(),
         ];
     }
 }

@@ -43,7 +43,7 @@ class PostController extends Controller
     public function index() : Response
     {
         return Inertia::render('Posts/Index', [
-            'post_data' => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
+            'post_data' => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(10),
         ]);
     }
 

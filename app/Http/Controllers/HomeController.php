@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index() : Response
     {
         return Inertia::render('Home/Index', [
-            'posts' => Post::with(['category', 'author'])->whereNotNull('published_at')->get()->sortByDesc('published_at')->values()->take(3),
+            'posts' => Post::with(['category', 'author'])->whereNotNull('published_at')->get()->sortByDesc('published_at')->values()->take(8),
         ]);
     }
 }
