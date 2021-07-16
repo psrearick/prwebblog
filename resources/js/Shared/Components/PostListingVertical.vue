@@ -24,7 +24,7 @@
                 <div class="my-4">
                     <a
                         class="px-6 py-1 border border-black rounded-full hover:text-yellow-500 hover:border-yellow-500"
-                        :href="'/categories/categories/' + post.category.slug"
+                        :href="'/categories/categories/' + post.category.name"
                     >
                         {{post.category.name }}
                     </a>

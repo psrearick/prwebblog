@@ -18,7 +18,7 @@
             <div>
                 <p class="text-sm">
                     By <inertia-link class="text-gray-500 hover:text-yellow-500" :href="'/authors/authors/' + post.author.id">{{ post.author.name }}</inertia-link>
-                    in <inertia-link class="text-gray-500 hover:text-yellow-500" :href="'/categories/categories/' + post.category.slug">{{ post.category.name }}</inertia-link>
+                    in <inertia-link class="text-gray-500 hover:text-yellow-500" :href="'/categories/categories/' + post.category.name">{{ post.category.name }}</inertia-link>
                 </p>
                 <p class="text-sm pt-2">
                     {{ post.excerpt }}

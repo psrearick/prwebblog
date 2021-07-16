@@ -1,9 +1,11 @@
 import { createApp, h } from 'vue';
 import { App, plugin } from '@inertiajs/inertia-vue3';
 import titleMixin from "./Shared/Mixins/titleMixin";
+import { InertiaProgress } from '@inertiajs/progress';
 import mitt from 'mitt';
 
 require('./bootstrap');
+InertiaProgress.init();
 
 
 const emitter = mitt();
@@ -18,7 +20,7 @@ const app = createApp({
                 import(`@/Pages/${name}`).then((module) => module.default),
         }),
 });
-app.use(plugin)
+app.use(plugin);
 app.mixin(titleMixin);
 app.config.globalProperties.emitter = emitter;
 app.mount(el);
