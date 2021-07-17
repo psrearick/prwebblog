@@ -7,33 +7,10 @@
             >
         </div>
         <form action="#" method="get" class="p-0 m-0" @submit.prevent="search">
-            <input
-                v-model="searchTerm"
-                type="text"
-                name="search"
-                placeholder="Find something"
-                class="
-                    ml-8
-                    bg-gray-200
-                    rounded-l-md
-                    py-2
-                    px-4
-                    focus:outline-none
-                "
+            <post-search-field
+                :model-value="searchTerm"
+                @update:model-value="search"
             />
-            <button
-                type="submit"
-                class="
-                    py-2
-                    px-4
-                    rounded-r-md
-                    bg-yellow-500
-                    hover:bg-yellow-700
-                    focus:outline-none
-                "
-            >
-                Go
-            </button>
         </form>
         <PostListing
             v-for="(post, index) in posts"
@@ -51,10 +28,17 @@ import store from "../../Shared/store";
 import Layout from "../../Shared/Layout";
 import Pagination from "../../Shared/Components/Pagination";
 import PostListing from "../../Shared/Components/PostListing";
+import PostSearchField from "../../Shared/Components/PostSearchField";
 
 export default {
     name: "PostsIndex",
-    components: { PostListing, Pagination },
+
+    components: {
+        PostListing,
+        Pagination,
+        PostSearchField,
+    },
+
     layout: Layout,
 
     title: "Posts",
@@ -78,12 +62,13 @@ export default {
         };
     },
 
-    mounted() {
+    created() {
         this.searchTerm = store.searchTerm;
     },
 
     methods: {
-        search() {
+        search(term) {
+            this.searchTerm = term;
             store.searchTerm = this.searchTerm;
             this.$inertia.get("/posts/search/" + this.searchTerm);
         },

@@ -29,32 +29,11 @@
                             class="p-0 m-0"
                             @submit.prevent="search"
                         >
-                            <input
-                                v-model="searchTerm"
-                                type="text"
-                                name="search"
-                                placeholder="Find something"
-                                class="
-                                    bg-gray-200
-                                    rounded-l-md
-                                    py-2
-                                    px-4
-                                    focus:outline-none
-                                "
+                            <post-search-field
+                                :model-value="searchTerm"
+                                :clear="true"
+                                @update:model-value="search"
                             />
-                            <button
-                                type="submit"
-                                class="
-                                    py-2
-                                    px-4
-                                    rounded-r-md
-                                    bg-yellow-500
-                                    hover:bg-yellow-700
-                                    focus:outline-none
-                                "
-                            >
-                                Go
-                            </button>
                         </form>
                     </div>
                 </div>
@@ -65,9 +44,12 @@
 
 <script>
 import store from "../store";
+import PostSearchField from "./PostSearchField";
 
 export default {
     name: "Header",
+
+    components: { PostSearchField: PostSearchField },
 
     data: function () {
         return {
@@ -76,9 +58,10 @@ export default {
     },
 
     methods: {
-        search() {
-            const term = this.searchTerm;
-            this.searchTerm = "";
+        search(term) {
+            this.$nextTick(() => {
+                this.searchTerm = "";
+            });
             store.searchTerm = term;
             this.$inertia.get("/posts/search/" + term);
         },
