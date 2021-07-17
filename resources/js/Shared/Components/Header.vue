@@ -21,6 +21,13 @@
                                 >Posts</inertia-link
                             >
                         </span>
+                        <span class="inline-block leading-10 align-middle ml-8">
+                            <inertia-link
+                                href="/categories/categories"
+                                class="hover:text-yellow-500"
+                                >Categories</inertia-link
+                            >
+                        </span>
                     </nav>
                     <div class="ml-12">
                         <form
@@ -63,7 +70,9 @@ export default {
                 this.searchTerm = "";
             });
             store.searchTerm = term;
-            this.$inertia.get("/posts/search/" + term);
+            this.$inertia.get("/posts/search/", {
+                post: term,
+            });
         },
     },
 };

@@ -4,8 +4,8 @@
             v-model="term"
             type="text"
             name="search"
-            placeholder="Find something"
-            class="ml-8 bg-gray-200 rounded-l-md py-2 px-4 focus:outline-none"
+            :placeholder="placeholder"
+            class="ml-8 bg-gray-100 rounded-l-md py-2 px-4 focus:outline-none"
             @enter="search"
         />
         <button
@@ -37,6 +37,10 @@ export default {
         clear: {
             type: Boolean,
             default: false,
+        },
+        placeholder: {
+            type: String,
+            default: "Find something",
         },
     },
 

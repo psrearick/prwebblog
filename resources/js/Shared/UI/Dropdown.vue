@@ -4,10 +4,10 @@
             <button
                 type="button"
                 class="
-                    bg-white
+                    z-10
+                    bg-gray-100
                     relative
                     w-full
-                    border border-gray-300
                     rounded-md
                     shadow-sm
                     pl-3
@@ -165,6 +165,11 @@
                 </ul>
             </transition>
         </div>
+        <div
+            v-if="active"
+            class="h-full w-full absolute top-0 left-0"
+            @click="active = false"
+        />
     </div>
 </template>
 

@@ -70,7 +70,9 @@ export default {
         search(term) {
             this.searchTerm = term;
             store.searchTerm = this.searchTerm;
-            this.$inertia.get("/posts/search/" + this.searchTerm);
+            this.$inertia.get("/posts/search/", {
+                post: this.searchTerm,
+            });
         },
     },
 };

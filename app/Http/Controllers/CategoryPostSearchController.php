@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class PostSearchController extends Controller
+class CategoryPostSearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +24,10 @@ class PostSearchController extends Controller
             ->filter($request)
             ->paginate(10);
 
-        return Inertia::render('Posts/Index', [
+        return Inertia::render('Categories/Index', [
             'postData'      => $posts,
-            'searchTerm'    => $request->get('post'),
-            'category'      => null,
+            'post'          => $request->get('post'),
+            'category'      => Category::find($request->get('category')),
             'categories'    => Category::all(),
         ]);
     }

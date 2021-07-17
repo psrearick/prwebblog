@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class Post extends Model
 {
@@ -23,11 +24,20 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeFilter(Builder $query, string $searchTerm) : void
+    public function scopeFilter(Builder $query, Request $request) : void
     {
-        $searchTerm = str_replace(' ', '%', $searchTerm);
-        $query
-            ->where('body', 'like', '%' . $searchTerm . '%')
-            ->orWhere('title', 'like', '%' . $searchTerm . '%');
+        if ($searchTerm = $request->get('post')) {
+            $searchTerm = str_replace(' ', '%', $searchTerm);
+            $query
+                ->where(function ($query) use ($searchTerm) {
+                    $query
+                        ->where('body', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('title', 'like', '%' . $searchTerm . '%');
+                });
+        }
+
+        if ($categoryId = $request->get('category')) {
+            $query->where('category_id', $categoryId);
+        }
     }
 }
