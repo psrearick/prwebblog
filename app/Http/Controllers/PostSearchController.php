@@ -25,7 +25,7 @@ class PostSearchController extends Controller
             ->paginate(10);
 
         return Inertia::render('Posts/Index', [
-            'post_data'     => $posts,
+            'postData'     => $posts,
             'searchTerm'    => $searchTerm,
             'category'      => null,
             'categories'    => Category::all(),

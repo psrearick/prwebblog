@@ -1,16 +1,15 @@
-import { createApp, h } from 'vue';
-import { App, plugin } from '@inertiajs/inertia-vue3';
+import { createApp, h } from "vue";
+import { App, plugin } from "@inertiajs/inertia-vue3";
 import titleMixin from "./Shared/Mixins/titleMixin";
-import { InertiaProgress } from '@inertiajs/progress';
-import mitt from 'mitt';
+import { InertiaProgress } from "@inertiajs/progress";
+import mitt from "mitt";
 
-require('./bootstrap');
+require("./bootstrap");
 InertiaProgress.init();
-
 
 const emitter = mitt();
 
-const el = document.getElementById('app');
+const el = document.getElementById("app");
 
 const app = createApp({
     render: () =>

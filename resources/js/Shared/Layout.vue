@@ -8,9 +8,11 @@
         </article>
         <footer :class="background">
             <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4">
-                <p class="text-gray-400 text-xs">&copy; Copyright 2021 | Phillip Rearick | All Rights Reserved</p>
+                <p class="text-gray-400 text-xs">
+                    &copy; Copyright 2021 | Phillip Rearick | All Rights
+                    Reserved
+                </p>
             </div>
-
         </footer>
     </main>
 </template>
@@ -19,7 +21,7 @@
 import Header from "./Components/Header";
 
 export default {
-    title: 'Title',
+    title: "Title",
 
     components: {
         Header: Header,
@@ -27,14 +29,14 @@ export default {
 
     data() {
         return {
-            background: 'app-bg-default',
-        }
+            background: "app-bg-default",
+        };
     },
 
     created() {
-        this.emitter.on("set-background", background => {
+        this.emitter.on("set-background", (background) => {
             this.background = background;
         });
     },
-}
+};
 </script>

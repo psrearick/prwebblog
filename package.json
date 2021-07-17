@@ -7,16 +7,27 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "lint": "npm run routes:generate && eslint --ext .js,.vue resources/js/",
+        "lint:fix": "npm run lint -- --fix",
+        "routes:generate": "php artisan ziggy:generate resources/js/ziggy.js",
+        "fix": "npm run lint:fix"
     },
     "devDependencies": {
         "@vue/compiler-sfc": "^3.0.11",
         "autoprefixer": "^10.2.5",
         "axios": "^0.21",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.30.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-lodash": "^7.2.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-vue": "^7.13.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "mitt": "^2.1.0",
         "postcss": "^8.2.10",
+        "prettier": "2.3.2",
         "resolve-url-loader": "^3.1.2",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
@@ -31,6 +42,7 @@
         "@inertiajs/inertia-vue3": "^0.3.14",
         "@inertiajs/progress": "^0.2.4",
         "moment": "^2.29.1",
-        "vue": "^3.0.11"
+        "vue": "^3.0.11",
+        "ziggy": "^2.4.0"
     }
 }

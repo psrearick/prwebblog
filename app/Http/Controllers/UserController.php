@@ -49,7 +49,7 @@ class UserController extends Controller
     public function show(User $author) : Response
     {
         return Inertia::render('Authors/Index', [
-            'post_data' => Post::where('user_id', $author->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
+            'postData' => Post::where('user_id', $author->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
             'author'    => $author,
         ]);
     }
