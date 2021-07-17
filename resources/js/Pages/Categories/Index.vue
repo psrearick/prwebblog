@@ -10,8 +10,9 @@
             label="name"
             v-bind:selected.sync="selected"
             v-on:update:selected="updateSelected($event)"
+            dropdown-placeholder="Select a Category..."
         />
-        <inertia-link v-if="category" class="text-yellow-500 text-sm text-center" href="/categories/categories">View All Posts</inertia-link>
+        <inertia-link v-if="category" class="text-yellow-500 text-sm text-center" href="/categories/categories">View posts in all categories</inertia-link>
         <PostListing v-for="(post, index) in posts" :post="post" :key="index" class="mb-4" :class="index < posts.length -1 ? 'border-b border-gray-200' : ''" />
         <Pagination :links_data="links" />
     </div>

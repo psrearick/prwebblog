@@ -9,7 +9,7 @@
                     @click="active = !active"
             >
                 <span class="block truncate">
-                    {{ selected ? selectedItem.name : 'Select an Option...' }}
+                    {{ selected ? selectedItem.name : dropdownPlaceholder }}
                 </span>
                 <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                     <svg class="h-5 w-5 text-gray-400"
@@ -95,12 +95,16 @@
 export default {
     name: "Dropdown",
 
-    props: [
-        'options',
-        'primaryKey',
-        'label',
-        'selected',
-    ],
+    props: {
+        'options': {type: Array},
+        'primaryKey': {type: Number},
+        'label': {type: String},
+        'selected': {type: Object},
+        'dropdownPlaceholder': {
+            type: Text,
+            default: 'Select an Option...',
+        },
+    },
 
     data() {
         return {

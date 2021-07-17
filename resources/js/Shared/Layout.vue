@@ -1,6 +1,7 @@
 <template>
     <main :class="'min-h-screen ' + background">
         <header :class="background">
+            <Header />
         </header>
         <article class="max-w-7xl mx-auto px-8">
             <slot />
@@ -15,8 +16,14 @@
 </template>
 
 <script>
+import Header from "./Components/Header";
+
 export default {
     title: 'Title',
+
+    components: {
+        Header: Header,
+    },
 
     data() {
         return {

@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         return Inertia::render('Categories/Index', [
-            'post_data'     => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
+            'post_data'     => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(10),
             'category'      => null,
             'categories'    => Category::all(),
         ]);

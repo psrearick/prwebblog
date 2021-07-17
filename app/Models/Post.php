@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Model
 {
@@ -20,5 +21,13 @@ class Post extends Model
     public function author() : BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function scopeFilter(Builder $query, string $searchTerm) : void
+    {
+        $searchTerm = str_replace(' ', '%', $searchTerm);
+        $query
+            ->where('body', 'like', '%' . $searchTerm . '%')
+            ->orWhere('title', 'like', '%' . $searchTerm . '%');
     }
 }
