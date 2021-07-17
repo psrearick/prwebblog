@@ -24,11 +24,11 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $body = "";
+        $body = '';
         for ($i = 0; $i < 8; $i++) {
             $body .= $this->faker->paragraph(8);
             if ($i < 7) {
-                $body .= "<br><br>";
+                $body .= '<br><br>';
             }
         }
 

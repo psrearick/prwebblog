@@ -19,31 +19,8 @@ class PostController extends Controller
     public function categoryIndex(Category $category) : Response
     {
         return Inertia::render('Posts/Index', [
-            'postData' => Post::where('category_id', $category->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
+            'postData'  => Post::where('category_id', $category->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
             'category'  => $category,
-        ]);
-    }
-
-    /**
-     * @param User $user
-     * @return Response
-     */
-    public function userIndex(User $author) : Response
-    {
-        return Inertia::render('Posts/Index', [
-            'postData' => Post::where('user_id', $author->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
-        ]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index() : Response
-    {
-        return Inertia::render('Posts/Index', [
-            'postData' => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(10),
         ]);
     }
 
@@ -58,14 +35,37 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index() : Response
+    {
+        return Inertia::render('Posts/Index', [
+            'postData' => Post::whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(10),
+        ]);
     }
 
     /**
@@ -83,12 +83,12 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function store(Request $request)
     {
         //
     }
@@ -106,13 +106,13 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Response
      */
-    public function destroy($id)
+    public function userIndex(User $author) : Response
     {
-        //
+        return Inertia::render('Posts/Index', [
+            'postData' => Post::where('user_id', $author->id)->whereNotNull('published_at')->with('category', 'author')->orderBy('published_at', 'desc')->paginate(5),
+        ]);
     }
 }

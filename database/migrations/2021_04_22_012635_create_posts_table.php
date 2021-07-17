@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Schema;
 class CreatePostsTable extends Migration
 {
     /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('posts');
+    }
+
+    /**
      * Run the migrations.
      *
      * @return void
@@ -25,15 +35,5 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('posts');
     }
 }
