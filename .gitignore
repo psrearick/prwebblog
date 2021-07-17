@@ -6,6 +6,8 @@
 /public/mix-manifest.json
 /storage/*.key
 /vendor
+tools/php-cs-fixer/vendor
+.php-cs-fixer.cache
 resources/js/ziggy.js
 .env
 .env.backup
