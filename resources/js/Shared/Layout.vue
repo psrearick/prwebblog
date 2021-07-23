@@ -1,9 +1,10 @@
 <template>
-    <main :class="'min-h-screen ' + background">
+    <main :class="'flex flex-col min-h-screen ' + background">
+        <FlashMessage />
         <header :class="background">
             <Header />
         </header>
-        <article class="max-w-7xl mx-auto px-8">
+        <article class="flex-1 w-full max-w-7xl mx-auto px-8">
             <slot />
         </article>
         <footer :class="background">
@@ -19,12 +20,14 @@
 
 <script>
 import Header from "./Components/Header";
+import FlashMessage from "./UI/FlashMessage";
 
 export default {
     title: "Title",
 
     components: {
         Header: Header,
+        FlashMessage: FlashMessage
     },
 
     data() {
