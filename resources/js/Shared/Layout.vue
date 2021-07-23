@@ -27,7 +27,7 @@ export default {
 
     components: {
         Header: Header,
-        FlashMessage: FlashMessage
+        FlashMessage: FlashMessage,
     },
 
     data() {

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('auth')->group(function() {
+Route::prefix('auth')->group(function () {
     Route::post('register', [RegisterController::class, 'store']);
     Route::get('register', [RegisterController::class, 'create']);
 });

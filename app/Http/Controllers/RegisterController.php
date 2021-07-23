@@ -10,7 +10,7 @@ use Redirect;
 
 class RegisterController extends Controller
 {
-    public function create(): \Inertia\Response
+    public function create() : \Inertia\Response
     {
         return Inertia::render('Register/Create');
     }
@@ -18,6 +18,7 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request)
     {
         User::create($request->all());
+
         return Redirect::route('home')->with('success', 'User Registered!');
     }
 }
