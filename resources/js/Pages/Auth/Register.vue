@@ -144,7 +144,7 @@
 import Layout from "../../Shared/Layout";
 
 export default {
-    name: "Create",
+    name: "Register",
 
     layout: Layout,
 

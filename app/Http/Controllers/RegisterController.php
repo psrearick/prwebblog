@@ -12,12 +12,13 @@ class RegisterController extends Controller
 {
     public function create() : \Inertia\Response
     {
-        return Inertia::render('Register/Create');
+        return Inertia::render('Auth/Register');
     }
 
     public function store(RegisterRequest $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+        auth()->login($user);
 
         return Redirect::route('home')->with('success', 'User Registered!');
     }
