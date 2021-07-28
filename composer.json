@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -13,6 +13,8 @@
         "itsgoingd/clockwork": "^5.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "spatie/laravel-markdown": "^1.1",
+        "spatie/sheets": "^1.7",
         "spatie/yaml-front-matter": "^2.0",
         "tightenco/ziggy": "^1.3"
     },
