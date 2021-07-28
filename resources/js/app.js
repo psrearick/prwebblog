@@ -1,6 +1,6 @@
 import { createApp, h } from "vue";
 import { App, plugin } from "@inertiajs/inertia-vue3";
-import titleMixin from "./Shared/Mixins/titleMixin";
+import TitleMixin from "./Shared/Mixins/TitleMixin";
 import { InertiaProgress } from "@inertiajs/progress";
 import mitt from "mitt";
 
@@ -20,6 +20,6 @@ const app = createApp({
         }),
 });
 app.use(plugin);
-app.mixin(titleMixin);
+app.mixin(TitleMixin);
 app.config.globalProperties.emitter = emitter;
 app.mount(el);

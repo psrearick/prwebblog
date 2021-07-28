@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryPostSearchController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostSearchController;
@@ -22,6 +23,7 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('posts')->group(function () {
     Route::get('search', [PostSearchController::class, 'index']);
+    Route::post('posts/{post:slug}/comments', [CommentController::class, 'store']);
     Route::resource('posts', PostController::class);
 });
 

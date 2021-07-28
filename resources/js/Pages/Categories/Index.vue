@@ -53,11 +53,12 @@ import PostSearchField from "../../Shared/Components/PostSearchField";
 
 export default {
     name: "CategoriesIndex",
+
     components: { Pagination, PostListing, Dropdown, PostSearchField },
 
     layout: Layout,
 
-    title: "Posts",
+    title: "Categories",
 
     props: {
         categories: {

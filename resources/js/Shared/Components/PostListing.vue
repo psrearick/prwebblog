@@ -57,21 +57,17 @@
 </template>
 
 <script>
-import moment from "moment";
+import FormatDateMixin from "../Mixins/FormatDateMixin";
 
 export default {
     name: "PostListing",
+
+    mixins: [FormatDateMixin],
 
     props: {
         post: {
             type: Object,
             default: () => {},
-        },
-    },
-
-    methods: {
-        format_date: function (date, format = "YYYY MMM DD") {
-            return moment(date).format(format);
         },
     },
 };

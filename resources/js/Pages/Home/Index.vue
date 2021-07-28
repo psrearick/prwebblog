@@ -108,15 +108,17 @@
 </template>
 <script>
 import Layout from "@/Shared/Layout";
-import moment from "moment";
 import PostListing from "../../Shared/Components/PostListing";
 import PostListingVertical from "../../Shared/Components/PostListingVertical";
+import FormatDateMixin from "../../Shared/Mixins/FormatDateMixin";
 
 export default {
     components: { PostListing, PostListingVertical },
     layout: Layout,
 
     title: "Home",
+
+    mixins: [FormatDateMixin],
 
     props: {
         posts: {
@@ -145,12 +147,6 @@ export default {
             }
         }
         this.secondaryPosts = allPosts;
-    },
-
-    methods: {
-        format_date: function (date, format = "YYYY MMM DD") {
-            return moment(date).format(format);
-        },
     },
 };
 </script>

@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import moment from "moment";
 import Layout from "../../Shared/Layout";
 import Pagination from "../../Shared/Components/Pagination";
 import PostListing from "../../Shared/Components/PostListing";
@@ -38,7 +37,7 @@ export default {
     components: { Pagination, PostListing },
     layout: Layout,
 
-    title: "Posts",
+    title: "Authors",
 
     props: {
         author: {
@@ -64,12 +63,6 @@ export default {
             posts: this.postData.data,
             links: this.postData.links,
         };
-    },
-
-    methods: {
-        format_date: function (date, format = "YYYY MMM DD") {
-            return moment(date).format(format);
-        },
     },
 };
 </script>

@@ -90,6 +90,8 @@ export default {
 
     layout: Layout,
 
+    title: "Login",
+
     props: {
         errors: {
             type: Object,

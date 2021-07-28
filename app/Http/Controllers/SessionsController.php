@@ -10,14 +10,15 @@ use Inertia\Response;
 
 class SessionsController extends Controller
 {
-    public function create(): Response
+    public function create() : Response
     {
         return Inertia::render('Auth/Login');
     }
 
-    public function destroy(): RedirectResponse
+    public function destroy() : RedirectResponse
     {
         auth()->logout();
+
         return Redirect::route('home')->with('success', 'You Have Logged Out');
     }
 
@@ -25,6 +26,7 @@ class SessionsController extends Controller
     {
         if (auth()->attempt($request->all())) {
             session()->regenerate();
+
             return Redirect::route('home')->with('success', 'You Have Logged In');
         }
 

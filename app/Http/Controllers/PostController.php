@@ -78,7 +78,7 @@ class PostController extends Controller
     public function show(string $slug) : Response
     {
         return Inertia::render('Posts/Show', [
-            'content' => Post::where('slug', $slug)->with('category', 'author')->first(),
+            'content' => Post::where('slug', $slug)->with('category', 'author', 'comments', 'comments.author')->first(),
         ]);
     }
 

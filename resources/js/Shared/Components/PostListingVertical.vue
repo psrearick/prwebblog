@@ -71,10 +71,12 @@
 </template>
 
 <script>
-import moment from "moment";
+import FormatDateMixin from "../Mixins/FormatDateMixin";
 
 export default {
     name: "PostListingVertical",
+
+    mixins: [FormatDateMixin],
 
     props: {
         post: {
@@ -84,12 +86,6 @@ export default {
         image: {
             type: Boolean,
             default: false,
-        },
-    },
-
-    methods: {
-        format_date: function (date, format = "YYYY MMM DD") {
-            return moment(date).format(format);
         },
     },
 };

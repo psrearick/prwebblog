@@ -148,6 +148,8 @@ export default {
 
     layout: Layout,
 
+    title: "Register",
+
     props: {
         errors: {
             type: Object,
