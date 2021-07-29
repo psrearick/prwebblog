@@ -28,14 +28,14 @@
                     required
                 />
                 <span v-if="errors.email" class="text-sm text-red-700">{{
-                        errors.email
-                    }}</span>
+                    errors.email
+                }}</span>
             </div>
             <div class="mb-6">
                 <label
                     class="block mb-2 uppercase font-bold text-xs text-gray-700"
                     for="password"
-                >Password</label
+                    >Password</label
                 >
                 <input
                     id="password"
@@ -46,8 +46,8 @@
                     required
                 />
                 <span v-if="errors.password" class="text-sm text-red-700">{{
-                        errors.password
-                    }}</span>
+                    errors.password
+                }}</span>
             </div>
             <div class="mb-6 flex justify-end">
                 <inertia-link
@@ -113,9 +113,7 @@ export default {
             this.$inertia.post("/auth/login", this.form);
         },
     },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

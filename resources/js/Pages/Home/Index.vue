@@ -114,11 +114,11 @@ import FormatDateMixin from "../../Shared/Mixins/FormatDateMixin";
 
 export default {
     components: { PostListing, PostListingVertical },
+
+    mixins: [FormatDateMixin],
     layout: Layout,
 
     title: "Home",
-
-    mixins: [FormatDateMixin],
 
     props: {
         posts: {

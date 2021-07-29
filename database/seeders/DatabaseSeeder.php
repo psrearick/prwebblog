@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $userCount = 4;
-        $faker = Factory::create();
+        $faker     = Factory::create();
 
         $users = User::factory($userCount)->create();
 

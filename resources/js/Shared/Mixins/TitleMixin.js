@@ -21,6 +21,6 @@ export default {
     watch: {
         title(newTitle) {
             document.title = newTitle;
-        }
-    }
+        },
+    },
 };
