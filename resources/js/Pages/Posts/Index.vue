@@ -1,17 +1,37 @@
 <template>
-    <div class="py-20">
-        <div v-if="category" class="text-center pb-12">
-            <h1 class="text-2xl font-bold text-center">{{ category.name }}</h1>
-            <inertia-link class="text-yellow-500 text-sm" href="/posts/posts"
-                >View All Posts</inertia-link
-            >
-        </div>
-        <form action="#" method="get" class="p-0 m-0" @submit.prevent="search">
-            <post-search-field
-                :model-value="searchTerm"
-                @update:model-value="search"
+    <div>
+        <h1 class="py-10 text-2xl font-bold text-center">Posts</h1>
+        <div class="flex w-2/3 mx-auto">
+            <Dropdown
+                v-model:selected="selectedCategory"
+                :options="categoryOptions"
+                primary-key="id"
+                label="name"
+                :dropdown-placeholder="null"
+                class="flex-1 -mt-0.5"
+                @update:selected="updateCategory($event)"
             />
-        </form>
+            <Dropdown
+                v-model:selected="selectedAuthor"
+                :options="authorOptions"
+                primary-key="id"
+                label="name"
+                :dropdown-placeholder="null"
+                class="flex-1 -mt-0.5 ml-8"
+                @update:selected="updateAuthor($event)"
+            />
+            <form
+                action="#"
+                method="get"
+                class="p-0 m-0"
+                @submit.prevent="updateSearch"
+            >
+                <PostSearchField
+                    :model-value="searchTerm"
+                    @update:model-value="updateSearch"
+                />
+            </form>
+        </div>
         <PostListing
             v-for="(post, index) in posts"
             :key="index"
@@ -24,16 +44,17 @@
 </template>
 
 <script>
-import store from "../../Shared/store";
 import Layout from "../../Shared/Layout";
 import Pagination from "../../Shared/Components/Pagination";
 import PostListing from "../../Shared/Components/PostListing";
 import PostSearchField from "../../Shared/Components/PostSearchField";
+import Dropdown from "../../Shared/UI/Dropdown";
 
 export default {
     name: "PostsIndex",
 
     components: {
+        Dropdown,
         PostListing,
         Pagination,
         PostSearchField,
@@ -44,7 +65,19 @@ export default {
     title: "Posts",
 
     props: {
+        categories: {
+            type: Array,
+            default: () => {},
+        },
         category: {
+            type: Object,
+            default: () => {},
+        },
+        authors: {
+            type: Array,
+            default: () => {},
+        },
+        author: {
             type: Object,
             default: () => {},
         },
@@ -52,27 +85,72 @@ export default {
             type: Object,
             default: () => {},
         },
+        term: {
+            type: String,
+            default: {},
+        },
     },
 
     data: function () {
         return {
-            posts: this.postData.data,
             links: this.postData.links,
+            posts: this.postData.data,
             searchTerm: "",
+            selectedCategory: null,
+            categoryOptions: [],
+            selectedAuthor: null,
+            authorOptions: [],
         };
     },
 
     created() {
-        this.searchTerm = store.searchTerm;
+        this.searchTerm = this.term;
+        this.selectedCategory = this.category || {};
+        this.selectedAuthor = this.author || {};
+        let categories = _.cloneDeep(this.categories);
+         categories.unshift({
+            id: -1,
+            name: 'All Categories',
+        });
+        this.categoryOptions = categories;
+        let authors = _.cloneDeep(this.authors);
+        authors.unshift({
+            id: -1,
+            name: 'All Authors',
+        });
+        this.authorOptions = authors;
     },
 
     methods: {
-        search(term) {
-            this.searchTerm = term;
-            store.searchTerm = this.searchTerm;
+        search() {
+            console.log('search');
             this.$inertia.get("/posts/search/", {
-                post: this.searchTerm,
+                filters: {
+                    post: this.searchTerm,
+                    category: this.selectedCategory.id,
+                    author: this.selectedAuthor.id,
+                },
             });
+        },
+        updateAuthor(event) {
+            console.log(event);
+            // if (event.id < 0) {
+            //     return;
+            // }
+            this.selectedAuthor = event;
+            this.search();
+        },
+        updateCategory(event) {
+            console.log(event);
+            // if (event.id < 0) {
+            //     return;
+            // }
+            this.selectedCategory = event;
+            this.search();
+        },
+        updateSearch(term) {
+            this.searchTerm = term;
+            this.search();
         },
     },
 };

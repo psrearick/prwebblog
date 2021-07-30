@@ -11,9 +11,10 @@
                     instruction on proper application of coding principles in
                     the context of fun projects
                 </p>
+                <p class="pt-2">well... not yet, but we're getting there!</p>
             </div>
         </div>
-        <div class="flex p-20 bg-gray-100 rounded my-8">
+        <Card class="p-20 my-8">
             <div class="pr-8 w-1/2">
                 <img
                     :src="featuredPost.image_url"
@@ -80,7 +81,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </Card>
         <div class="flex pb-8">
             <PostListingVertical
                 v-for="(post, index) in primaryPosts"
@@ -111,9 +112,10 @@ import Layout from "@/Shared/Layout";
 import PostListing from "../../Shared/Components/PostListing";
 import PostListingVertical from "../../Shared/Components/PostListingVertical";
 import FormatDateMixin from "../../Shared/Mixins/FormatDateMixin";
+import Card from "../../Shared/UI/Card";
 
 export default {
-    components: { PostListing, PostListingVertical },
+    components: { Card, PostListing, PostListingVertical },
 
     mixins: [FormatDateMixin],
     layout: Layout,

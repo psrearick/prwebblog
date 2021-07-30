@@ -3,32 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Post;
+use App\Models\User;
+use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class PostSearchController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
-        $posts = Post::whereNotNull('published_at')
-            ->with('category', 'author')
-            ->orderBy('published_at', 'desc')
+        $authors    = User::has('posts');
+        $categories = Category::has('posts');
+        $filters     = $request->input('filters') ?: [];
+        $posts      = app(PostRepository::class)
+            ->filteredPosts($filters)
             ->latest()
-            ->filter($request)
             ->paginate(10);
 
         return Inertia::render('Posts/Index', [
             'postData'      => $posts,
-            'searchTerm'    => $request->get('post'),
-            'category'      => null,
-            'categories'    => Category::all(),
+            'categories'    => $categories->get(),
+            'category'      => array_key_exists('category', $filters) ? $categories->find($filters['category']) : null,
+            'authors'       => $authors->get(),
+            'author'        => array_key_exists('author', $filters) ? $authors->find($filters['author']) : null,
+            'term'          => array_key_exists('post', $filters) ? $filters['post'] : null,
         ]);
     }
 }

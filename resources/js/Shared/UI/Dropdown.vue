@@ -27,7 +27,7 @@
                 @click="active = !active"
             >
                 <span class="block truncate">
-                    {{ selected ? selectedItem.name : dropdownPlaceholder }}
+                    {{ selectedItem ? selectedItem.name : dropdownPlaceholder }}
                 </span>
                 <span
                     class="
@@ -113,7 +113,6 @@
                         role="option"
                         @click="selectOption(option)"
                     >
-                        <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
                         <span
                             class="block truncate"
                             :class="
@@ -126,11 +125,6 @@
                             {{ option[label] }}
                         </span>
 
-                        <!--
-                          Checkmark, only display for selected option.
-
-                          Highlighted: "text-white", Not Highlighted: "text-indigo-600"
-                        -->
                         <span
                             v-if="
                                 selectedItem &&
@@ -210,7 +204,13 @@ export default {
     },
 
     mounted() {
-        this.selectedItem = this.selected;
+        this.selectedItem = Object.keys(this.selected).length
+            ? this.selected
+            : null;
+        if (!this.selectedItem && !this.dropdownPlaceholder && this.options.length) {
+            // this.selectOption(this.options[0]);
+            this.selectedItem = this.options[0];
+        }
     },
 
     methods: {

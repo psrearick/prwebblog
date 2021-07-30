@@ -8,7 +8,7 @@
             <slot />
         </article>
         <footer :class="background">
-            <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4">
+            <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4 mt-8">
                 <p class="text-gray-400 text-xs">
                     &copy; Copyright 2021 | Phillip Rearick | All Rights
                     Reserved
