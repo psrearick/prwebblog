@@ -19,20 +19,28 @@
                 </div>
                 <div class="p-8" v-html="content.body" />
                 <div class="flex justify-between">
-                    <a
+                    <p
                         v-if="content.category"
-                        :href="
-                            '/categories/categories/' + content.category.name
+                        class="
+                            cursor-pointer
+                            text-yellow-600
+                            hover:text-black hover:font-bold
                         "
-                        class="text-yellow-600 hover:text-black hover:font-bold"
-                        >{{ content.category.name }}</a
+                        @click="viewCategory(content.category)"
                     >
-                    <a
+                        {{ content.category.name }}
+                    </p>
+                    <p
                         v-if="content.category"
-                        :href="'/authors/authors/' + content.author.id"
-                        class="text-yellow-600 hover:text-black hover:font-bold"
-                        >{{ content.author.name }}</a
+                        class="
+                            cursor-pointer
+                            text-yellow-600
+                            hover:text-black hover:font-bold
+                        "
+                        @click="viewAuthor(content.author)"
                     >
+                        {{ content.author.name }}
+                    </p>
                 </div>
             </article>
         </section>
@@ -120,11 +128,14 @@
 <script>
 import Layout from "../../Shared/Layout";
 import PostComment from "../../Shared/Components/PostComment";
+import FilteredPostMethodsMixin from "../../Shared/Mixins/FilteredPostMethodsMixin";
 
 export default {
     name: "PostsShow",
 
     components: { PostComment: PostComment },
+
+    mixins: [FilteredPostMethodsMixin],
 
     layout: Layout,
 

@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="flex">
         <input
             v-model="term"
             type="text"
             name="search"
             :placeholder="placeholder"
-            class="ml-8 bg-gray-100 rounded-l-md py-2 px-4 focus:outline-none"
+            class="flex-1 bg-gray-100 rounded-l-md py-2 px-4 focus:outline-none"
             @enter="search"
         />
         <button

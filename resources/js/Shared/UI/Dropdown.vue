@@ -4,7 +4,7 @@
             <button
                 type="button"
                 class="
-                    z-10
+                    z-5
                     bg-gray-100
                     relative
                     w-full
@@ -207,7 +207,11 @@ export default {
         this.selectedItem = Object.keys(this.selected).length
             ? this.selected
             : null;
-        if (!this.selectedItem && !this.dropdownPlaceholder && this.options.length) {
+        if (
+            !this.selectedItem &&
+            !this.dropdownPlaceholder &&
+            this.options.length
+        ) {
             // this.selectOption(this.options[0]);
             this.selectedItem = this.options[0];
         }

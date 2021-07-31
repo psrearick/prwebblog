@@ -16,7 +16,7 @@ Route::get('ping', function () {
 
     $mailchimp->setConfig([
         'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us6'
+        'server' => 'us6',
     ]);
 
     $response = $mailchimp->lists->getAllLists();

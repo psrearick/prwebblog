@@ -1,9 +1,11 @@
 <template>
     <div>
-        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between py-5">
                 <span class="inline-block leading-10 align-middle">
-                    <inertia-link href="/" class="font-bold text-yellow-600">PRWebBlog</inertia-link>
+                    <inertia-link href="/" class="font-bold text-yellow-600"
+                        >PRWebBlog</inertia-link
+                    >
                 </span>
                 <div class="flex">
                     <nav class="relative text-gray-500">

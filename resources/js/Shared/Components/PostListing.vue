@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-4 py-6">
+    <div class="grid grid-cols-4 py-6 gap-x-4">
         <div>
             <div class="text-gray-500 text-sm">
                 <div class="text-xl">
@@ -15,25 +15,28 @@
                 <inertia-link
                     :href="'/posts/posts/' + post.slug"
                     class="text-2xl"
-                    >{{ post.title }}</inertia-link
                 >
+                    {{ post.title }}
+                </inertia-link>
             </h3>
             <div>
-                <p class="text-sm">
-                    By
-                    <inertia-link
-                        class="text-gray-500 hover:text-yellow-500"
-                        :href="'/authors/authors/' + post.author.id"
-                        >{{ post.author.name }}</inertia-link
+                <div class="text-sm text-gray-500 flex space-x-1">
+                    <p>By</p>
+                    <p
+                        class="hover:text-yellow-500 cursor-pointer"
+                        @click="viewAuthor(post.author)"
                     >
-                    in
-                    <inertia-link
-                        class="text-gray-500 hover:text-yellow-500"
-                        :href="'/categories/categories/' + post.category.name"
-                        >{{ post.category.name }}</inertia-link
+                        {{ post.author.name }}
+                    </p>
+                    <p>in</p>
+                    <p
+                        class="hover:text-yellow-500 cursor-pointer"
+                        @click="viewCategory(post.category)"
                     >
-                </p>
-                <p class="text-sm pt-2">
+                        {{ post.category.name }}
+                    </p>
+                </div>
+                <p class="text-sm pt-2 px-4">
                     {{ post.excerpt }}
                 </p>
             </div>
@@ -49,8 +52,9 @@
                         float-right
                         hover:bg-black hover:text-gray-100
                     "
-                    >Continue Reading</inertia-link
                 >
+                    Continue Reading
+                </inertia-link>
             </div>
         </div>
     </div>
@@ -58,11 +62,12 @@
 
 <script>
 import FormatDateMixin from "../Mixins/FormatDateMixin";
+import FilteredPostMethodsMixin from "../Mixins/FilteredPostMethodsMixin";
 
 export default {
     name: "PostListing",
 
-    mixins: [FormatDateMixin],
+    mixins: [FormatDateMixin, FilteredPostMethodsMixin],
 
     props: {
         post: {

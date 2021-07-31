@@ -20,11 +20,12 @@
                     <div class="text-gray-500 text-sm">
                         {{ format_date(post.published_at, "DD MMM YYYY") }}
                     </div>
-                    <a
-                        class="hover:text-yellow-500"
-                        :href="'/authors/authors/' + post.author.id"
-                        >{{ post.author.name }}</a
+                    <p
+                        class="hover:text-yellow-500 cursor-pointer"
+                        @click="viewAuthor(post.author)"
                     >
+                        {{ post.author.name }}
+                    </p>
                 </div>
                 <div>
                     <p
@@ -39,18 +40,20 @@
                     </p>
                 </div>
                 <div class="my-4">
-                    <a
+                    <p
                         class="
                             px-6
                             py-1
                             border border-black
+                            inline
+                            cursor-pointer
                             rounded-full
                             hover:text-yellow-500 hover:border-yellow-500
                         "
-                        :href="'/categories/categories/' + post.category.name"
+                        @click="viewCategory(post.category)"
                     >
                         {{ post.category.name }}
-                    </a>
+                    </p>
                 </div>
                 <div class="pt-4">
                     <a
@@ -72,11 +75,12 @@
 
 <script>
 import FormatDateMixin from "../Mixins/FormatDateMixin";
+import FilteredPostMethodsMixin from "../Mixins/FilteredPostMethodsMixin";
 
 export default {
     name: "PostListingVertical",
 
-    mixins: [FormatDateMixin],
+    mixins: [FormatDateMixin, FilteredPostMethodsMixin],
 
     props: {
         post: {

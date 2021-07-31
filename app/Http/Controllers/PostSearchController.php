@@ -11,12 +11,12 @@ use Inertia\Response;
 
 class PostSearchController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request) : Response
     {
-        $authors    = User::has('posts');
-        $categories = Category::has('posts');
+        $authors     = User::has('posts');
+        $categories  = Category::has('posts');
         $filters     = $request->input('filters') ?: [];
-        $posts      = app(PostRepository::class)
+        $posts       = app(PostRepository::class)
             ->filteredPosts($filters)
             ->latest()
             ->paginate(10);

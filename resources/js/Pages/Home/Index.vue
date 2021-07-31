@@ -31,7 +31,7 @@
                     >
                 </h3>
                 <div class="text-gray-500 text-sm flex justify-between">
-                    <div class="text-gray-500 text-sm">
+                    <div>
                         {{
                             format_date(
                                 featuredPost.published_at,
@@ -39,11 +39,12 @@
                             )
                         }}
                     </div>
-                    <a
-                        class="hover:text-yellow-500"
-                        :href="'/authors/authors/' + featuredPost.author.id"
-                        >{{ featuredPost.author.name }}</a
+                    <p
+                        class="hover:text-yellow-500 cursor-pointer inline"
+                        @click="viewAuthor(featuredPost.author)"
                     >
+                        {{ featuredPost.author.name }}
+                    </p>
                 </div>
                 <div>
                     <p class="text-sm pt-2">
@@ -51,21 +52,19 @@
                     </p>
                 </div>
                 <div class="my-4">
-                    <a
+                    <span
                         class="
                             px-6
                             py-1
+                            cursor-pointer
                             border border-black
                             rounded-full
                             hover:text-yellow-500 hover:border-yellow-500
                         "
-                        :href="
-                            '/categories/categories/' +
-                            featuredPost.category.name
-                        "
+                        @click="viewCategory(featuredPost.category)"
                     >
                         {{ featuredPost.category.name }}
-                    </a>
+                    </span>
                 </div>
                 <div class="pt-4">
                     <a
@@ -113,11 +112,12 @@ import PostListing from "../../Shared/Components/PostListing";
 import PostListingVertical from "../../Shared/Components/PostListingVertical";
 import FormatDateMixin from "../../Shared/Mixins/FormatDateMixin";
 import Card from "../../Shared/UI/Card";
+import FilteredPostMethodsMixin from "../../Shared/Mixins/FilteredPostMethodsMixin";
 
 export default {
     components: { Card, PostListing, PostListingVertical },
 
-    mixins: [FormatDateMixin],
+    mixins: [FormatDateMixin, FilteredPostMethodsMixin],
     layout: Layout,
 
     title: "Home",
